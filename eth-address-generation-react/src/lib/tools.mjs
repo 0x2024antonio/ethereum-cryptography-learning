@@ -1,6 +1,6 @@
-const { secp256k1 } = require("ethereum-cryptography/secp256k1");
-const { keccak256 } = require("ethereum-cryptography/keccak");
-const { toHex, utf8ToBytes } = require("ethereum-cryptography/utils");
+import { secp256k1 } from "ethereum-cryptography/secp256k1";
+import { keccak256 } from "ethereum-cryptography/keccak";
+import { toHex, utf8ToBytes } from "ethereum-cryptography/utils";
 
 const getPrivateKey = () => {
   const privateKey = secp256k1.utils.randomPrivateKey();
@@ -58,4 +58,4 @@ const getEthAddress = (publicKey) => {
   return ethAddress;
 };
 
-module.exports = { getPrivateKey, getPublicKey, getEthAddress };
+export { getPrivateKey, getPublicKey, getEthAddress };

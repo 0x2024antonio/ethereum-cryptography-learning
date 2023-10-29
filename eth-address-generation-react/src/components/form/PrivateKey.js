@@ -11,7 +11,7 @@ import {
 
 import { useContext } from "react";
 import { EthAddressContext } from "../../App";
-import { getPrivateKey } from "../../lib/tools";
+import { getPrivateKey } from "../../lib/tools.mjs";
 
 const PrivateKey = () => {
   const { privateKeyObj, setPrivateKeyObj } = useContext(EthAddressContext);

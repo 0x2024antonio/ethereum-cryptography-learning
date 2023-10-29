@@ -11,7 +11,7 @@ import {
 
 import { useState, useContext } from "react";
 import { EthAddressContext } from "../../App";
-import { getEthAddress } from "../../lib/tools";
+import { getEthAddress } from "../../lib/tools.mjs";
 
 const EthAddress = () => {
   const { publicKeyObj, ethAddress, setEthAddress } =

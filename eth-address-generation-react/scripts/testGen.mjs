@@ -1,12 +1,16 @@
-const fs = require("fs").promises;
-const path = require("path");
-const {
+import * as path from "path";
+import * as url from "url";
+import * as fs from "fs";
+
+import {
   getPrivateKey,
   getPublicKey,
   getEthAddress,
-} = require("../src/lib/tools");
+} from "../src/lib/tools.mjs";
 
 const main = async () => {
+  const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+
   const output = [];
   const outputPath = path.join(__dirname, "keys.txt");
   const numEthAddress = 3;
@@ -25,7 +29,7 @@ const main = async () => {
 
   console.log(output);
 
-  await fs.writeFile(outputPath, JSON.stringify(output));
+  await fs.promises.writeFile(outputPath, JSON.stringify(output));
 
   console.log(`Written to ${outputPath} successfully`);
 };
