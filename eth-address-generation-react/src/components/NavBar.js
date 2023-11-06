@@ -12,15 +12,16 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 const NavBar = () => {
+  const bg = useColorModeValue("gray.100", "gray.900");
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex alignItems="Center" bg={useColorModeValue("gray.100", "gray.900")}>
-      <Box ml="5">
+    <Flex px={6} alignItems="Center" bg={bg}>
+      <Box>
         <Heading size="md"> Ethereum Address Generation </Heading>
       </Box>
       <Spacer />
-      <ButtonGroup mr="5">
-        <Button onClick={toggleColorMode}>
+      <ButtonGroup>
+        <Button bg={bg} onClick={toggleColorMode}>
           {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         </Button>
       </ButtonGroup>

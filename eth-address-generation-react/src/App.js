@@ -1,7 +1,10 @@
 import { NavBar } from "./components/NavBar";
 import { Form } from "./components/Form";
+import { Footer } from "./components/Footer";
 import { useState } from "react";
 import { createContext } from "react";
+
+import { Flex, Spacer } from "@chakra-ui/react";
 
 export const EthAddressContext = createContext(null);
 
@@ -21,10 +24,12 @@ function App() {
         setEthAddress,
       }}
     >
-      <>
+      <Flex direction={"column"} height={"100vh"}>
         <NavBar />
         <Form />
-      </>
+        <Spacer />
+        <Footer />
+      </Flex>
     </EthAddressContext.Provider>
   );
 }
