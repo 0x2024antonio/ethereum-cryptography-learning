@@ -2,6 +2,8 @@ import { Flex, Spacer, Button, Heading, Input, Text } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
 
+import { useAccount } from "wagmi";
+
 import {
   useContractRead,
   usePrepareContractWrite,
@@ -13,6 +15,8 @@ import { address, abi } from "./MyContract";
 
 function App() {
   const [inputGreeting, setInputGreeting] = useState("");
+
+  const { isConnected } = useAccount();
 
   const { data: contractGreeting } = useContractRead({
     address: address,
@@ -44,7 +48,7 @@ function App() {
   });
 
   return (
-    <Flex direction={"column"} height={"100vh"}>
+    <Flex direction={"column"} height={"100vh"} bg={"#282c34"}>
       <Flex direction={"row"} justifyContent={"space-between"} px={5}>
         <Heading>Storage Dapp</Heading>
         <ConnectButton />
@@ -57,7 +61,8 @@ function App() {
         gap={5}
       >
         <Spacer />
-        <Heading>{contractGreeting}</Heading>
+        {!isConnected && <Heading>Please connect to your wallet</Heading>}
+        {isConnected && <Heading>{contractGreeting}</Heading>}
         <Spacer />
         <Input
           placeholder="Set Greeting here..."
@@ -65,8 +70,12 @@ function App() {
           onChange={(e) => {
             setInputGreeting(e.target.value);
           }}
+          isDisabled={!isConnected}
         />
-        <Button isDisabled={!write || isLoading} onClick={write}>
+        <Button
+          isDisabled={!isConnected || !write || isLoading}
+          onClick={write}
+        >
           Set Greeting
         </Button>
         {isSuccess && <Text>Success!</Text>}

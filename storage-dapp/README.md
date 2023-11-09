@@ -1,8 +1,8 @@
-# Rainbowkit Learning
+# Storage Dapp
 
 This project was to demostrate using wagmi to interact with a deployed smart contract, with a react front-end.
 
-Demo: [here](https://rainbowkit-learning.vercel.app/)
+Demo: [here](https://storage-dapp-0x2024antonio.vercel.app/)
 
 ## Available Scripts
 
