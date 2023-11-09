@@ -50,7 +50,7 @@ function App() {
   return (
     <Flex direction={"column"} height={"100vh"} bg={"#282c34"}>
       <Flex direction={"row"} justifyContent={"space-between"} px={5}>
-        <Heading>Storage Dapp</Heading>
+        <Heading color={"white"}>Storage Dapp</Heading>
         <ConnectButton />
       </Flex>
       <Flex
@@ -61,10 +61,13 @@ function App() {
         gap={5}
       >
         <Spacer />
-        {!isConnected && <Heading>Please connect to your wallet</Heading>}
-        {isConnected && <Heading>{contractGreeting}</Heading>}
+        {!isConnected && (
+          <Heading color={"white"}>Please connect to your wallet</Heading>
+        )}
+        {isConnected && <Heading color={"white"}>{contractGreeting}</Heading>}
         <Spacer />
         <Input
+          color={"white"}
           placeholder="Set Greeting here..."
           width={"30%"}
           onChange={(e) => {
@@ -78,9 +81,9 @@ function App() {
         >
           Set Greeting
         </Button>
-        {isSuccess && <Text>Success!</Text>}
+        {isSuccess && <Text color={"white"}>Success!</Text>}
         {(isPrepareError || isWriteError) && (
-          <Text> {(prepareError || writeError)?.message}</Text>
+          <Text color={"white"}> {(prepareError || writeError)?.message}</Text>
         )}
       </Flex>
     </Flex>
